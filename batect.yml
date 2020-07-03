@@ -2,7 +2,7 @@ containers:
   terraform-container:
     build_directory: ./Docker
     volumes:
-      - local:
+      - local: .
         container: /code
         options: cached
     working_directory: /code
