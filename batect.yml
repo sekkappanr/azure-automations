@@ -7,7 +7,7 @@ containers:
         options: cached
     working_directory: /code
     environment:
-      BUILD_ENVIRONMENT: 'dev'
+      BUILD_ENVIRONMENT: 'dev_env'
 
 tasks:
   workspace:
