@@ -1,11 +1,11 @@
 containers:
   terraform-container:
-    build_directory: ./Docker
+    build_directory: ./terraform
     volumes:
       - local: .
         container: /code
         options: cached
-    working_directory: /code
+    working_directory: /code/terraform
     environment:
       BUILD_ENVIRONMENT: 'dev_env'
 
