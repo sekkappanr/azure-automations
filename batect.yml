@@ -20,7 +20,7 @@ tasks:
     description: Initialize Terraform
     run:
       container: terraform-container
-      command: sh -c './terraform/initializeTF.sh'
+      command: sh -c './initializeTF.sh'
 
   plan:
     description: Plan resource changes
