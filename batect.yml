@@ -1,0 +1,47 @@
+containers:
+  terraform-container:
+    build_directory: ./Docker
+    volumes:
+      - local:
+        container: /code
+        options: cached
+    working_directory: /code
+    environment:
+      BUILD_ENVIRONMENT: 'dev'
+
+tasks:
+  workspace:
+    description: Build/Select workspace for terraform
+    run:
+      container: terraform-container
+      command: sh -c 'terraform workspace select $BUILD_ENVIRONMENT || terraform workspace new $BUILD_ENVIRONMENT'
+
+  init:
+    description: Initialize Terraform
+    run:
+      container: terraform-container
+      command: sh -c 'terraform init'
+
+  plan:
+    description: Plan resource changes
+    run:
+      container: terraform-container
+      command: sh -c 'terraform plan'
+    prerequisites:
+      - workspace
+
+  apply:
+    description: Apply Plan
+    run:
+      container: terraform-container
+      command: sh -c 'terraform apply'
+    prerequisites:
+      - workspace
+
+  destroy:
+    description: Destroy Terraform
+    run:
+      container: terraform-container
+      command: sh -c 'terraform destroy'
+    prerequisites:
+      - workspace
