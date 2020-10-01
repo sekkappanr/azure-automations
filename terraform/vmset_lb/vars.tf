@@ -1,6 +1,19 @@
-variable "aws_region" {
+variable "az_region" {
 	description="Required. Represent the aws region. Default set to ap-southeast-2"
-	default="ap-southeast-2"
+	default="ap-southeast"
+}
+
+variable "subscription_id" {
+	description="Required. Represent the Subscription ID."
+}
+variable "client_id" {
+	description="Required. Represent the Client ID."
+}
+variable "client_secret" {
+	description="Required. Represent the Client Secret."
+}
+variable "tenant_id" {
+	description="Required. Represent the Tenant ID."
 }
 variable "common_az" {
 	description="Required. Represents the availability zone, under which the resource should be created"
