@@ -3,6 +3,7 @@ variable "az_region" {
 	default="australiasoutheast"
 }
 
+
 variable "resource_group_name" {
 	description="Required. Represent the Resource Group Name "
     type=string
