@@ -19,8 +19,8 @@ resource "azurerm_network_security_rule" "custom_rules" {
     network_security_group_name = azurerm_network_security_group.nsg[0].name
     source_address_prefix = length(lookup(var.custom_irules[count.index], "source_application_security_group_ids", [])) == 0 ? join(",", var.ipv4_ingress_cidr_block) : ""
     description = lookup(var.custom_irules[count.index],"description","Default Automated Splunk Ingress Rule description")
-    source_port_ranges = lookup(var.custom_irules[count.index],"from_port",var.internal_rules[lookup(var.custom_irules[count.index],"rule","none")][1],)
-    destination_port_ranges = lookup(var.custom_irules[count.index],"to_port",var.internal_rules[lookup(var.custom_irules[count.index],"rule","none")][2],)
+    source_port_ranges = split(",", replace(lookup(var.custom_irules[count.index], "from_port", "*"), "*", "0-65535"))
+    destination_port_ranges = split(",", replace(lookup(var.custom_irules[count.index], "to_port", "*"), "*", "0-65535"))
     protocol = lookup(var.custom_irules[count.index],"protocol",var.internal_rules[lookup(var.custom_irules[count.index],"rule","none")][3],)
 
     resource_group_name=var.resource_group_name
@@ -36,8 +36,8 @@ resource "aws_security_group_rule" "custom_source_rules" {
     access  = lookup(var.custom_irules_source[count.index],"access",var.internal_rules[lookup(var.custom_irules_source[count.index],"rule","none")][7],)
     network_security_group_name = azurerm_network_security_group.nsg[0].name
     description = lookup(var.custom_irules_source[count.index],"description","Default Automated Splunk Ingress Rule description")
-    source_port_ranges = lookup(var.custom_irules_source[count.index],"from_port",var.internal_rules[lookup(var.custom_irules_source[count.index],"rule","none")][1],)
-    destination_port_ranges = lookup(var.custom_irules_source[count.index],"to_port",var.internal_rules[lookup(var.custom_irules_source[count.index],"rule","none")][2],)
+    source_port_ranges = split(",", replace(lookup(var.custom_irules[count.index], "from_port", "*"), "*", "0-65535")) 
+    destination_port_ranges = split(",", replace(lookup(var.custom_irules[count.index], "to_port", "*"), "*", "0-65535")) 
     protocol = lookup(var.custom_irules_source[count.index],"protocol",var.internal_rules[lookup(var.custom_irules_source[count.index],"rule","none")][3],)
     source_application_security_group_ids = lookup(var.custom_irules_source[count.index],"source_sg_id",null)
 
