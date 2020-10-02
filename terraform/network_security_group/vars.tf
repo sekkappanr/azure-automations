@@ -37,6 +37,18 @@ variable "resource_name_prefix" {
 	default="nsg"
 }
 
+variable "ipv4_ingress_cidr_block" {
+    description=""
+    type=list(string)
+    default=[]
+}
+
+variable "ipv6_ingress_cidr_block" {
+    description=""
+    type=list(string)
+    default=[]
+}
+
 variable "custom_irules" {
     description=""
     type=list(map(string))

@@ -67,6 +67,24 @@ variable "security_group_name" {
     type=string
 }
 
+variable "resource_name_prefix" {
+	description="Optional.Represents the resoruce name prefix to be associated. Default SG"
+	type=string
+	default="nsg"
+}
+
+variable "ipv4_ingress_cidr_block" {
+    description=""
+    type=list(string)
+    default=[]
+}
+
+variable "ipv6_ingress_cidr_block" {
+    description=""
+    type=list(string)
+    default=[]
+}
+
 variable "rstring_length" {
     description="Optional. Represents the length of the random string to be generated. Default set to 12"
     type=number
