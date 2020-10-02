@@ -38,11 +38,6 @@ variable "create_sg" {
   default=false
 }
 
-variable "security_group_name" {
-    description=""
-    type=string
-}
-
 variable "custom_irules" {
     description=""
     type=list(map(string))
