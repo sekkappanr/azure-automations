@@ -31,16 +31,10 @@ variable "container_tf_state" {
     type=string
 	description="Required. The Container which maintains the terraform state file"
 }
-
-variable "create_sg" {
-  description="Optional. Represents if individual Network Security Group for each server is required"
-  type=bool
-  default=false
-}
-
-variable "security_group_name" {
-    description=""
-    type=string
+variable "resource_name_prefix" {
+	description="Optional.Represents the resoruce name prefix to be associated. Default SG"
+	type=list(string)
+	default="nsg"
 }
 
 variable "custom_irules" {
@@ -71,46 +65,3 @@ variable "security_group_name" {
     description="Required. Represents the security group name"
     type=string
 }
-
-variable "rstring_length" {
-    description="Optional. Represents the length of the random string to be generated. Default set to 12"
-    type=number
-    default=12
-}
-
-variable "rstring_upper" {
-    description="Optional. Represents if the random string should contain upper characters. Default set to true"
-    type=bool
-    default=true
-
-}
-
-variable "rstring_lower" {
-    description="Optional. Represents if the random string should contain lower characters. Default set to false"
-    type=bool
-    default=false
-}
-
-variable "rstring_number" {
-    description="Optional. Represents if the random string should contain any numbers. Default set to true"
-    type=bool
-    default=true
-}
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
