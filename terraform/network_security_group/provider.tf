@@ -5,7 +5,7 @@ provider "azurerm" {
   client_secret   = "${var.client_secret}"
   tenant_id       = "${var.tenant_id}"
 
-
+  region = "${var.az_region}"
   features {}
 }
 
