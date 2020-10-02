@@ -3,13 +3,6 @@ variable "az_region" {
 	default="australiasoutheast"
 }
 
-
-variable "prefix" {
-    type=string
-	description="Prefix of Stack name"
-}
-
-
 variable "create_sg" {
   description="Optional. Represents if individual Network Security Group for each server is required"
   type=bool
