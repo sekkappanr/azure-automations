@@ -1,4 +1,4 @@
-az_region="Australia Southeast"
+az_region="West US"
 subscription_id="38f5f4d2-491a-4444-a70a-4e6dd8460ab1"
 client_id ="7253038e-6604-4f6e-958e-f42c18372c4b"
 client_secret="Tob4G_hNO59P9l~Hpw_G0R~9hgyxL_a4UC"
