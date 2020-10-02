@@ -22,7 +22,7 @@ resource "azurerm_network_security_rule" "custom_rules" {
     source_port_ranges = split(",", replace(lookup(var.custom_irules[count.index], "from_port", "*"), "*", "0-65535"))
     destination_port_ranges = split(",", replace(lookup(var.custom_irules[count.index], "to_port", "*"), "*", "0-65535"))
     protocol = lookup(var.custom_irules[count.index],"protocol",var.internal_rules[lookup(var.custom_irules[count.index],"rule","none")][3],)
- #   source_application_security_group_ids      = lookup(var.custom_irules[count.index], "source_application_security_group_ids", [])
+   source_application_security_group_ids      = length(lookup(var.custom_irules[count.index], "source_application_security_group_ids", "")) == 0 ? [] : split(",", replace(lookup(var.custom_irules[count.index], "source_application_security_group_ids", "*"), "*", ""))
 #   destination_application_security_group_ids = lookup(var.custom_irules[count.index], "destination_application_security_group_ids", [])
 
     network_security_group_name = azurerm_network_security_group.nsg[0].name
