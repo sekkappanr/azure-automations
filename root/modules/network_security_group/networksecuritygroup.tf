@@ -17,7 +17,7 @@ resource "azurerm_network_security_rule" "custom_rules" {
     direction  = lookup(var.custom_irules[count.index],"direction",var.internal_rules[lookup(var.custom_irules[count.index],"rule","none")][6], )
     access  = lookup(var.custom_irules[count.index],"access",var.internal_rules[lookup(var.custom_irules[count.index],"rule","none")][7],)
     network_security_group_name = azurerm_network_security_group.nsg[0].name
-    source_address_prefix = length(lookup(var.custom_irules[count.index], "source_application_security_group_ids", [])) == 0 ? join(",", var.cidr_block) : ""
+    source_address_prefix = length(lookup(var.custom_irules[count.index], "source_application_security_group_ids", [])) == 0 ? join(",", var.ipv4_ingress_cidr_block) : ""
     description = lookup(var.custom_irules[count.index],"description","Default Automated Splunk Ingress Rule description")
     source_port_ranges = lookup(var.custom_irules[count.index],"from_port",var.internal_rules[lookup(var.custom_irules[count.index],"rule","none")][1],)
     destination_port_ranges = lookup(var.custom_irules[count.index],"to_port",var.internal_rules[lookup(var.custom_irules[count.index],"rule","none")][2],)
