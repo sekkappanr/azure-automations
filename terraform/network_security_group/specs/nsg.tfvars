@@ -10,15 +10,15 @@ storage_tf_state ="managetfstatefile"
 container_tf_state ="terraformstate"
 
 custom_irules = [
-        { from_port = "9887", to_port="9887", protocol="tcp", self_sg=true, name = "pfwd" , direction="Inbound"},
-        { from_port = "9998]", to_port="9998", protocol="tcp",self_sg=true, name = "pfwds" , direction="Inbound"},
-        { from_port = "8088", to_port="8088", protocol="tcp",self_sg=true, name = "pspl" , direction="Inbound"},
-        { from_port = "8089", to_port="8089", protocol="tcp",cidr_block="", name = "pmgmt" , direction="Inbound"},
-        { from_port = "8000", to_port="8000", protocol="tcp",self_sg=true, name = "pweb" , direction="Inbound"},
-        { from_port = "8189", to_port="8189", protocol="tcp",self_sg=true, name = "prep" , direction="Inbound"},
-        { from_port = "8191", to_port="8191", protocol="tcp",self_sg=true, name = "pqwe" , direction="Inbound"},
-        { from_port = "9997", to_port="9997", protocol="tcp",cidr_block="", name = "ofwd2" , direction="Outbound"},
-        { from_port = "8089", to_port="8089", protocol="tcp",self_sg=true, name = "ofwd" , direction="Outbound"},
+        { from_port = "9887", to_port="9887", protocol="tcp", self_sg=true, name = "pfwd" , direction="Inbound" , access="Allow"},
+        { from_port = "9998]", to_port="9998", protocol="tcp",self_sg=true, name = "pfwds" , direction="Inbound", access="Allow"},
+        { from_port = "8088", to_port="8088", protocol="tcp",self_sg=true, name = "pspl" , direction="Inbound", access="Allow"},
+        { from_port = "8089", to_port="8089", protocol="tcp",cidr_block="", name = "pmgmt" , direction="Inbound" , access="Allow"},
+        { from_port = "8000", to_port="8000", protocol="tcp",self_sg=true, name = "pweb" , direction="Inbound" , access="Allow"},
+        { from_port = "8189", to_port="8189", protocol="tcp",self_sg=true, name = "prep" , direction="Inbound" , access="Allow"},
+        { from_port = "8191", to_port="8191", protocol="tcp",self_sg=true, name = "pqwe" , direction="Inbound" , access="Allow"},
+        { from_port = "9997", to_port="9997", protocol="tcp",cidr_block="", name = "ofwd2" , direction="Outbound" , access="Allow"},
+        { from_port = "8089", to_port="8089", protocol="tcp",self_sg=true, name = "ofwd" , direction="Outbound", access="Allow"},
 ]
 
 custom_irules_source = [
