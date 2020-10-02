@@ -1,12 +1,10 @@
 ############### The below module config is defined to create ec2 related security groups. ####################
 module "sg" {
-#       source = "git@innersource.accenture.com/esp/cloudautomation.git//modules/security_group?ref=dev"
-        source = "../../terraform-root-config/modules/security_group/"
-        security_group_name=format("%s-ec2",var.security_group_name)
+        source = "../../root/modules/network_security_group/"
+        security_group_name=format("%s-vm",var.security_group_name)
         resource_name_prefix=var.resource_name_prefix
         ipv4_ingress_cidr_block=["10.0.0.0/8"]
         custom_irules = "${var.custom_irules}"
-        aws_vpc_id = var.vpc_id
         create_sg = length(var.custom_irules) > 0 ? true : false
         standard_tags = var.standard_tags
         custom_tags = var.custom_tags
