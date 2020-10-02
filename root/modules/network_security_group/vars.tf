@@ -3,34 +3,12 @@ variable "az_region" {
 	default="australiasoutheast"
 }
 
-variable "subscription_id" {
-	description="Required. Represent the Subscription ID."
-}
-variable "client_id" {
-	description="Required. Represent the Client ID."
-}
-variable "client_secret" {
-	description="Required. Represent the Client Secret."
-}
-variable "tenant_id" {
-	description="Required. Represent the Tenant ID."
-}
+
 variable "prefix" {
     type=string
 	description="Prefix of Stack name"
 }
-variable "rg_tf_state" {
-    type=string
-	description="Required. The Resource group which maintains the terraform state file"
-}
-variable "storage_tf_state" {
-    type=string
-	description="Required. The Storage account which maintains the terraform state file"
-}
-variable "container_tf_state" {
-    type=string
-	description="Required. The Container which maintains the terraform state file"
-}
+
 
 variable "create_sg" {
   description="Optional. Represents if individual Network Security Group for each server is required"
