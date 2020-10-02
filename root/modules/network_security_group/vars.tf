@@ -1,3 +1,13 @@
+variable "az_region" {
+	description="Required. Represent the Azure region. Default set to australiasoutheast"
+	default="australiasoutheast"
+}
+
+variable "resource_group_name" {
+	description="Required. Represent the Resource Group Name "
+    type=string
+	default=""
+}
 
 variable "create_sg" {
   description="Optional. Represents if individual Network Security Group for each server is required"
