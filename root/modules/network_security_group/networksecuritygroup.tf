@@ -16,14 +16,14 @@ resource "azurerm_network_security_rule" "custom_rules" {
     priority = lookup(var.custom_irules[count.index],"priority", 4096 - length(var.custom_irules) + count.index)
     direction  = lookup(var.custom_irules[count.index],"direction",var.internal_rules[lookup(var.custom_irules[count.index],"rule","none")][6], )
     access  = lookup(var.custom_irules[count.index],"access",var.internal_rules[lookup(var.custom_irules[count.index],"rule","none")][7],)
-    source_address_prefix  = length(lookup(var.custom_irules[count.index], "source_application_security_group_ids", [])) == 0 ? lookup(var.custom_irules[count.index], "source_address_prefix", "*") : "*"
-    destination_address_prefix = length(lookup(var.custom_irules[count.index], "destination_application_security_group_ids", [])) == 0 ? lookup(var.custom_irules[count.index], "destination_address_prefix", "*") : "*"
+    source_address_prefix  = length(lookup(var.custom_irules[count.index], "source_application_security_group_ids", "")) == 0 ? lookup(var.custom_irules[count.index], "source_address_prefix", "*") : "*"
+    destination_address_prefix = length(lookup(var.custom_irules[count.index], "destination_application_security_group_ids", "")) == 0 ? lookup(var.custom_irules[count.index], "destination_address_prefix", "*") : "*"
     description = lookup(var.custom_irules[count.index],"description","Default Automated Splunk Ingress Rule description")
     source_port_ranges = split(",", replace(lookup(var.custom_irules[count.index], "from_port", "*"), "*", "0-65535"))
     destination_port_ranges = split(",", replace(lookup(var.custom_irules[count.index], "to_port", "*"), "*", "0-65535"))
     protocol = lookup(var.custom_irules[count.index],"protocol",var.internal_rules[lookup(var.custom_irules[count.index],"rule","none")][3],)
-    source_application_security_group_ids      = lookup(var.custom_irules[count.index], "source_application_security_group_ids", [])
-    destination_application_security_group_ids = lookup(var.custom_irules[count.index], "destination_application_security_group_ids", [])
+    source_application_security_group_ids      = lookup(var.custom_irules[count.index], "source_application_security_group_ids", "*")
+    destination_application_security_group_ids = lookup(var.custom_irules[count.index], "destination_application_security_group_ids", "*")
 
     network_security_group_name = azurerm_network_security_group.nsg[0].name
     resource_group_name=var.resource_group_name
@@ -37,15 +37,15 @@ resource "azurerm_network_security_rule" "custom_source_rules" {
     priority = lookup(var.custom_irules_source[count.index],"priority", 4096 - length(var.custom_irules) + count.index)
     direction  = lookup(var.custom_irules_source[count.index],"direction",var.internal_rules[lookup(var.custom_irules_source[count.index],"rule","none")][6],)
     access  = lookup(var.custom_irules_source[count.index],"access",var.internal_rules[lookup(var.custom_irules_source[count.index],"rule","none")][7],)
-    #source_address_prefix  = length(lookup(var.custom_irules_source[count.index], "source_application_security_group_ids", [])) == 0 ? lookup(var.custom_irules_source[count.index], "source_address_prefix", "*") : "*"
-    source_address_prefix  = length(lookup(var.custom_irules_source[count.index], "source_application_security_group_ids", [])) == 0 ? lookup(var.custom_irules_source[count.index], "source_address_prefix", "*") : "*"
-    destination_address_prefix = length(lookup(var.custom_irules_source[count.index], "destination_application_security_group_ids", [])) == 0 ? lookup(var.custom_irules_source[count.index], "destination_address_prefix", "*") : "*"
+    #source_address_prefix  = length(lookup(var.custom_irules_source[count.index], "source_application_security_group_ids", "")) == 0 ? lookup(var.custom_irules_source[count.index], "source_address_prefix", "*") : "*"
+    source_address_prefix  = length(lookup(var.custom_irules_source[count.index], "source_application_security_group_ids", "")) == 0 ? lookup(var.custom_irules_source[count.index], "source_address_prefix", "*") : "*"
+    destination_address_prefix = length(lookup(var.custom_irules_source[count.index], "destination_application_security_group_ids", "")) == 0 ? lookup(var.custom_irules_source[count.index], "destination_address_prefix", "*") : "*"
     description = lookup(var.custom_irules_source[count.index],"description","Default Automated Splunk Ingress Rule description")
     source_port_ranges = split(",", replace(lookup(var.custom_irules_source[count.index], "from_port", "*"), "*", "0-65535")) 
     destination_port_ranges = split(",", replace(lookup(var.custom_irules_source[count.index], "to_port", "*"), "*", "0-65535")) 
     protocol = lookup(var.custom_irules_source[count.index],"protocol",var.internal_rules[lookup(var.custom_irules_source[count.index],"rule","none")][3],)
-    source_application_security_group_ids      = lookup(var.custom_irules_source[count.index], "source_application_security_group_ids", [])
-    destination_application_security_group_ids = lookup(var.custom_irules_source[count.index], "destination_application_security_group_ids", [])
+    source_application_security_group_ids      = lookup(var.custom_irules_source[count.index], "source_application_security_group_ids", "*")
+    destination_application_security_group_ids = lookup(var.custom_irules_source[count.index], "destination_application_security_group_ids", "*")
 
     network_security_group_name = azurerm_network_security_group.nsg[0].name
     resource_group_name=var.resource_group_name
