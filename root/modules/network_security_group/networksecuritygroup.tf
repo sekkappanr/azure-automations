@@ -7,7 +7,6 @@ resource "azurerm_network_security_group" "nsg" {
             var.custom_tags,
         )
     resource_group_name=var.resource_group_name
-    region=var.az_region
     location=var.az_region
 }
 
