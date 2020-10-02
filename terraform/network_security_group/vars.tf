@@ -33,7 +33,7 @@ variable "container_tf_state" {
 }
 variable "resource_name_prefix" {
 	description="Optional.Represents the resoruce name prefix to be associated. Default SG"
-	type=list(string)
+	type=string
 	default="nsg"
 }
 
