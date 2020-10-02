@@ -39,8 +39,7 @@ resource "azurerm_network_security_rule" "custom_source_rules" {
     source_port_ranges = split(",", replace(lookup(var.custom_irules[count.index], "from_port", "*"), "*", "0-65535")) 
     destination_port_ranges = split(",", replace(lookup(var.custom_irules[count.index], "to_port", "*"), "*", "0-65535")) 
     protocol = lookup(var.custom_irules_source[count.index],"protocol",var.internal_rules[lookup(var.custom_irules_source[count.index],"rule","none")][3],)
-    source_application_security_group_ids = lookup(var.custom_irules_source[count.index],"source_sg_id",null)
-
+ 
     resource_group_name=var.resource_group_name
 }
 
