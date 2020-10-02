@@ -1,7 +1,6 @@
 resource "azurerm_network_security_group" "nsg" {
     count=var.create_sg ? 1 : 0
     name = format("%s-%s-%s",var.resource_name_prefix,var.security_group_name,"${random_string.sg_rstring[count.index].result}")
-    description = "Automated ec2 security group generated via Terraform automation tool"
     tags = merge (
             { "Name" = format("%s-%s-%s",var.resource_name_prefix,var.security_group_name,"${random_string.sg_rstring[count.index].result}") },
             var.standard_tags,
