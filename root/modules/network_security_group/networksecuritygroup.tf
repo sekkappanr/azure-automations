@@ -24,7 +24,6 @@ resource "azurerm_network_security_rule" "custom_rules" {
     protocol = lookup(var.custom_irules[count.index],"protocol",var.internal_rules[lookup(var.custom_irules[count.index],"rule","none")][3],)
 
     resource_group_name=var.resource_group_name
-    location=var.az_region
 }
 
  
@@ -43,7 +42,6 @@ resource "aws_security_group_rule" "custom_source_rules" {
     source_application_security_group_ids = lookup(var.custom_irules_source[count.index],"source_sg_id",null)
 
     resource_group_name=var.resource_group_name
-    location=var.az_region
 }
 
  
