@@ -12,7 +12,7 @@ resource "azurerm_network_security_group" "nsg" {
 
 resource "azurerm_network_security_rule" "custom_rules" {
     count = var.create_sg ? length(var.custom_irules) : 0
-    name = lookup(var.custom_irules[count.index],"access",var.internal_rules[lookup(var.custom_irules[count.index],"rule","none")][7],"Allow")split(",", replace(lookup(var.custom_irules[count.index], "from_port", "*"), "*", "0-65535"))lookup(var.custom_irules[count.index],"direction",var.internal_rules[lookup(var.custom_irules[count.index],"rule","none")][6], "Any")
+    name = lookup(var.custom_irules[count.index],"access",var.internal_rules[lookup(var.custom_irules[count.index],"rule","none")][7],"Allow")+split(",", replace(lookup(var.custom_irules[count.index], "from_port", "*"), "*", "0-65535"))+lookup(var.custom_irules[count.index],"direction",var.internal_rules[lookup(var.custom_irules[count.index],"rule","none")][6], "Any")
     priority = lookup(var.custom_irules[count.index],"priority", 4096 - length(var.custom_irules) + count.index)
     direction  = lookup(var.custom_irules[count.index],"direction",var.internal_rules[lookup(var.custom_irules[count.index],"rule","none")][6], "Any")
     access  = lookup(var.custom_irules[count.index],"access",var.internal_rules[lookup(var.custom_irules[count.index],"rule","none")][7],"Allow")
