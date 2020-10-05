@@ -1,17 +1,21 @@
 ################ Terraform Common Config #################
 
-az_region="us-east-1"
+az_region="Australia Southeast"
+subscription_id="38f5f4d2-491a-4444-a70a-4e6dd8460ab1"
+client_id ="7253038e-6604-4f6e-958e-f42c18372c4b"
+client_secret="Tob4G_hNO59P9l~Hpw_G0R~9hgyxL_a4UC"
+tenant_id="c12b80cd-6b61-4169-a57c-903b082296a8"
+prefix ="sampletest"
 image_regex="ami-nvi-aiops-splunkami_v1.0"
 enable_load_balancer=true
-load_balancer_type=private
-load_balancer_sku=Standard
+load_balancer_type="private"
+load_balancer_sku="Standard"
 vmset_desired_capacity = 1
 vmset_min_size = 1
 vmset_max_size = 1
-
+admin_username = testing
+disable_password_authentication = 
 s3_bootscript_bucket = "splunk-build-infra-config"
-
-
 
 ami_owner="546363320159"
 
