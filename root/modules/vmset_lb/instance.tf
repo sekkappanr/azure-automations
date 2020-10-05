@@ -39,25 +39,7 @@ resource "azurerm_lb_backend_address_pool" "az_lb_backend_pool" {
 }
 
 
-resource "random_string" "cw_vol_rstring" {
-    count = var.enable_cloud_watch ? length(var.vol_cloud_watch_def) * var.number_of_servers : 0
-    length = var.rstring_length
-    upper = var.rstring_upper
-    lower = var.rstring_lower 
-    number = var.rstring_number
-    special = false
 
-}
-
-resource "random_string" "cw_sys_rstring" {
-        count = var.enable_cloud_watch ? length(var.asg_cloud_watch_def) * var.number_of_servers : 0
-        length = var.rstring_length
-        upper = var.rstring_upper
-        lower = var.rstring_lower
-        number = var.rstring_number
-        special = false
-
-}
 
  resource "random_string" "elb_rstring" {
         count = var.type_elb == "classic" ? 1 : 0

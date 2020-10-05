@@ -7,7 +7,7 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "resource_group" {
+resource "azurerm_resource_group" "application_resource_group" {
   name     = "${var.prefix}-resources"
   location = "${var.az_region}"
 }
