@@ -10,10 +10,10 @@ data "azurerm_image" "tfd_image" {
 resource "azurerm_lb" "tf_lb" {
     count = var.enable_load_balancer == true && var.load_balancer_type == "public" ? 1 : 0
     name                = length(format("%s%s-%s",var.resource_name_prefix[3],var.resource_name_tag,random_string.lb_rstring[count.index].result)) > 32 ? substr(format("%s%s-%s",var.resource_name_prefix[3],var.resource_name_tag,random_string.elb_rstring[count.index].result),0,31) : format("%s%s-%s",var.resource_name_prefix[3],var.resource_name_tag,random_string.lb_rstring[count.index].result)
-    location            = var.az_location
+    location            = var.location
     resource_group_name = var.resource_group_name
     sku                 = var.load_balancer_sku
-    tags                = merge({ "ResourceName" = var.load_balancer_type == "public" ? lower("lbext-${var.resource_name_tag}-${data.azurerm_resource_group.az_resource_group.location}") : lower("lbint-${var.vmscaleset_name}-${data.azurerm_resource_group.az_resource_group.location}") }, var.tags, )
+    tags                = merge({ "ResourceName" = var.load_balancer_type == "public" ? lower("lbext-${var.resource_name_tag}-${var.az_region}") : lower("lbint-${var.vmscaleset_name}-${var.az_region}") }, var.tags, )
 
     frontend_ip_configuration {
         name                          = var.load_balancer_type == "public" ? lower("lbext-frontend-${var.resource_name_prefix[0]}") : lower("lbint-frontend-${var.resource_name_prefix[0]}")
