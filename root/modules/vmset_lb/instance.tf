@@ -9,7 +9,7 @@ data "azurerm_image" "tfd_image" {
 
 resource "azurerm_lb" "tf_lb" {
     count = var.enable_load_balancer == true && var.load_balancer_type == "public" ? 1 : 0
-    name                = length(format("%s%s-%s",var.resource_name_prefix[3],var.resource_name_tag,random_string.lb_rstring[count.index].result)) > 32 ? substr(format("%s%s-%s",var.resource_name_prefix[3],var.resource_name_tag,random_string.elb_rstring[count.index].result),0,31) : format("%s%s-%s",var.resource_name_prefix[3],var.resource_name_tag,random_string.lb_rstring[count.index].result)
+    name                = length(format("%s%s-%s",var.resource_name_prefix[3],var.resource_name_tag,random_string.lb_rstring[count.index].result)) > 32 ? substr(format("%s%s-%s",var.resource_name_prefix[3],var.resource_name_tag,random_string.lb_rstring[count.index].result),0,31) : format("%s%s-%s",var.resource_name_prefix[3],var.resource_name_tag,random_string.lb_rstring[count.index].result)
     location            = var.location
     resource_group_name = var.resource_group_name
     sku                 = var.load_balancer_sku
@@ -69,7 +69,7 @@ resource "random_string" "asg_rstring" {
 }
 
 resource "random_string" "lb_rstring" {
-        count = var.type_elb == "network" || var.type_elb == "application" ? local.no_of_lb :  0
+        count = var.load_balancer_type == "private" || var.load_balancer_type == "public" ? local.no_of_lb :  0
         length = 8
         upper = true
         lower = false
