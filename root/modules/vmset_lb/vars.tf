@@ -65,7 +65,7 @@ variable "private_ip_address_allocation" {
 	default=""
 }
 
-variable "var.lb_private_ip_address" {
+variable "lb_private_ip_address" {
 	description="Required. Represent the Resource Group Name "
     type=string
 	default=""
