@@ -5,7 +5,7 @@ single_az=true
 name_tag_format_type="standard"
 
 number_of_servers=1
-
+create_individual_lb=true
 offering=1
 
 

@@ -50,14 +50,16 @@ variable "resource_name_tag" {
 
 }
 
+variable "create_individual_lb" {
+        description="Optional. Represents if individual load balancer for each server is required"
+        type=bool
+        default=false
+}
+
 variable "number_of_servers" {
-
-              description="Required. Represents the number of servers that should be provisioned"
-
-              type=number
-
-              default=1
-
+        description="Required. Represents the number of servers that should be provisioned"
+        type=number
+        default=1
 }
 
 variable "index_offset" {
@@ -898,15 +900,7 @@ variable "elb_internal" {
 
 }
 
-variable "create_individual_alb" {
 
-  description="Optional. Represents if individual load balancer for each server is required"
-
-  type=bool
-
-  default=false
-
-}
 
 variable "lb_type" {
 

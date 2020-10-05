@@ -24,6 +24,7 @@ module "vm_scaleset_cluster" {
         resource_name_tag = "${var.resource_name_tag}"
         resource_name_prefix = var.resource_name_prefix
         load_balancer_sku = var.load_balancer_sku
+        create_individual_lb = var.create_individual_lb
     #    vmset_min_size = var.vmset_min_size
    #     vmset_max_size = var.vmset_max_size
         #vmset_desired_capacity = var.vmset_desired_capacity
