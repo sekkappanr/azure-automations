@@ -32,3 +32,16 @@ variable "resource_name_tag" {
         type=string
 
 }
+
+variable "resource_name_prefix" {
+        description="Optional.Represents the resoruce name prefix to be associated. Default SG"
+        type=list(string)
+        default=["asg-","lt-","tg-","elb-","alb-","nlb-"]
+}
+
+
+variable "resource_group_name" {
+	description="Required. Represent the Resource Group Name "
+    type=string
+	default=""
+}
