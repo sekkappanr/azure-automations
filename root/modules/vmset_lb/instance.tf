@@ -2,10 +2,10 @@ terraform {
     required_version = ">=0.12"
 }
 
-data "azurerm_image" "tfd_image" {
-     name_regex = format("%s*",var.image_regex)
-     resource_group_name=var.resource_group_name
-}
+#data "azurerm_image" "tfd_image" {
+#     name_regex = format("%s*",var.image_regex)
+#     resource_group_name=var.resource_group_name
+#}
 
 #-----------------------------------
 # Create the public IP for Azure Load Balancer
@@ -44,16 +44,6 @@ resource "azurerm_lb" "az_public_sslb" {
     }
 }
 
-
-#---------------------------------------
-# Create Backend address pool for Load Balancer
-#---------------------------------------
-resource "azurerm_lb_backend_address_pool" "az_lb_backend_pool" {
-  count               = var.enable_load_balancer ? 1 : 0
-  name                = lower("lbe-backend-pool-${var.resource_name_prefix[0]}")
-  resource_group_name = var.resource_group_name
-  loadbalancer_id     = azurerm_lb.az_public_sslb[count.index].id
-}
 
 
 
