@@ -1,4 +1,4 @@
-############### The below module config is defined to create ec2 related security groups. ####################
+############### The below module config is defined to create vm related Network security groups. ####################
 module "nsg" {
         source = "../../root/modules/network_security_group/"
         security_group_name=format("%s-vm",var.security_group_name)
