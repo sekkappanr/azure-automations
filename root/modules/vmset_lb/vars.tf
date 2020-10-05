@@ -3,23 +3,6 @@ variable "az_region" {
 	default="australiasoutheast"
 }
 
-variable "subscription_id" {
-	description="Required. Represent the Subscription ID."
-}
-variable "client_id" {
-	description="Required. Represent the Client ID."
-}
-variable "client_secret" {
-	description="Required. Represent the Client Secret."
-}
-variable "tenant_id" {
-	description="Required. Represent the Tenant ID."
-}
-variable "prefix" {
-        type=string
-        description="Prefix of Stack name"
-}
-
 variable "image_regex" {
         description="Required. Represents the aws ami pattern search criteria for a given OS type"
         type=string
