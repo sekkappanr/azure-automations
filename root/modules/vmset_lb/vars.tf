@@ -58,3 +58,15 @@ variable "number_of_servers" {
         type=number
         default=1
 }
+
+variable "private_ip_address_allocation" {
+	description="Required. Represent the Resource Group Name "
+    type=string
+	default=""
+}
+
+variable "var.lb_private_ip_address" {
+	description="Required. Represent the Resource Group Name "
+    type=string
+	default=""
+}
