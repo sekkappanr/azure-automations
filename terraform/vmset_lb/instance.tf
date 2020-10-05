@@ -4,7 +4,6 @@
 
 module "vm_scaleset_cluster" {
         source = "../../root/modules/vmset_lb/"
-        resource_name_prefix=var.resource_name_prefix
         resource_group_name=azurerm_resource_group.application_resource_group.name
         az_region=var.az_region
         image_regex = "${var.image_regex}"
