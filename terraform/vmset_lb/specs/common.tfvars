@@ -13,8 +13,8 @@ load_balancer_sku="Standard"
 vmset_desired_capacity = 1
 vmset_min_size = 1
 vmset_max_size = 1
-admin_username = testing
-disable_password_authentication = 
+admin_username = "testing"
+disable_password_authentication = true
 s3_bootscript_bucket = "splunk-build-infra-config"
 
 ami_owner="546363320159"
